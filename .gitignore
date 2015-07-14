@@ -1,0 +1,10 @@
+.idea/
+.idea/**/
+.settings/
+.settings/**/
+node_modules
+node_modules/**/
+httpdocs/jspm/
+httpdocs/jspm/**/
+typings/
+typings/**/
