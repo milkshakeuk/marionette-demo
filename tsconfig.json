@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "removeComments": true,
+        "sourceMap": true,
+        "target": "ES6",
+        "listFiles": true
+    }
+}

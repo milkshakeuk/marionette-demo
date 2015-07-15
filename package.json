@@ -31,7 +31,9 @@
             "packages": "httpdocs/jspm"
         },
         "dependencies": {
-            "marionette": "github:marionettejs/backbone.marionette@^2.4.2"
+            "handlebars": "github:components/handlebars.js@^3.0.3",
+            "marionette": "github:marionettejs/backbone.marionette@^2.4.2",
+            "text": "github:systemjs/plugin-text@^0.0.2"
         },
         "devDependencies": {
             "typescript": "github:mhegazy/typescript@v1.5-beta2"
