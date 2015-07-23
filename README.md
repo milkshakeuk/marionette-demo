@@ -9,7 +9,7 @@ $ npm install
 
 Next we want to install a couple of node cli-tools:
 ```
-$ npm install -g gulp karma-cli tsd
+$ npm install -g gulp karma-cli tsd jspm@beta
 ```
 
 Finally the typescript declaration files which will provide the IDE with loveley information around the shape of external libs (helps with auto completion and intelisense).
