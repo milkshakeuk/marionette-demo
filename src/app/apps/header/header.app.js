@@ -1,12 +1,20 @@
+import Marionette from "backbone.marionette";
+import Radio from "backbone.radio";
 import HeaderController from "./show/controller";
 
 class HeaderApp {
-    constructor(options = {}){
+    constructor(options = {}) {
         this.options = options;
-        this.region = options.region;
+        this.setRegion(options);
+        this.showHeader();
     }
 
-    start() {
+    setRegion(options) {
+        let ch = Radio.channel("global");
+        this.region = options.region || ch.request("region", "headerRegion");
+    }
+
+    showHeader() {
         return new HeaderController({ region: this.region });
     }
 

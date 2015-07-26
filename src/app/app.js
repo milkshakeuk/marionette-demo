@@ -2,10 +2,11 @@
 import Backbone from "backbone";
 import Marionette from "backbone.marionette";
 import HeaderApp from "./apps/header/header.app";
+import AppRegistry from "./apps/registry";
 
 
 var AppLayout = Marionette.LayoutView.extend({
-    el: 'body',
+    el: "body",
     regions: {
         headerRegion: "#header-region",
         mainRegion: "#main-region"
@@ -13,26 +14,20 @@ var AppLayout = Marionette.LayoutView.extend({
 });
 
 var Application = Marionette.Application.extend({
-
-    initialize(options) {
+    initialize() {
         this.Layout = new AppLayout();
-        this.Router = new Marionette.AppRouter();
-    },
-
-    onBeforeStart() {
-        // do stuff before start of main application
-    },
-
-    onStart() {
-        var headerApp = new HeaderApp({ region: this.Layout.headerRegion });
-        headerApp.start();
-
-        if (!Backbone.History.started) {
-            Backbone.history.start({ pushState: true });
-        }
     }
 });
 
 var App = new Application();
+
+App.on("before:start", () => AppRegistry.initApps());
+App.on("start", function () {
+    if (!Backbone.History.started) {
+        Backbone.history.start({ pushState: true });
+    }
+});
+
+App.channel.reply("region", name => App.Layout.getRegion(name));
 
 export default App;

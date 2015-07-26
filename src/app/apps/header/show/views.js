@@ -3,35 +3,15 @@ import layoutTemplate from "./templates/layout.html!text";
 import navItemTemplate from "./templates/nav.item.html!text";
 import Backbone from "backbone";
 import Marionette from "backbone.marionette";
+import { Chooseable } from "../../../common/views/behaviours";
 
 
 var NavigationItemView = Marionette.ItemView.extend({
     template: navItemTemplate,
     tagName: "li",
-        onRender() {
-            this.toggleChosen();
-        },
-
-        events: {
-            "click": "clicked"
-        },
-
-        modelEvents: {
-            "change:chosen": "toggleChosen"
-        },
-
-        toggleChosen() {
-            this.$el.toggleClass("active", this.model.get("chosen"));
-        },
-
-        clicked(e) {
-            e.preventDefault();
-            if (this.model.get("chosen")) return;
-            this.model.collection.each(m => m.set("chosen", false));
-            this.model.set("chosen", true);
-            this.$el.toggleClass("active", this.model.get("chosen"));
-            this.trigger("clicked", this.model, this.model.collection);
-        }
+    behaviors: [{
+        behaviorClass: Chooseable
+    }]
 });
 
 var NavigationView = Marionette.CollectionView.extend({

@@ -16,7 +16,7 @@ gulp.task('serve', function () {
 });
 
 // move src to httpdocs folder
-gulp.task('build', function () {
+gulp.task('build',['clean:build'],function () {
     return gulp.src(['src/**/*.js', 'src/**/*.html'])
         .pipe(gulp.dest('httpdocs/js/'));
 });
@@ -44,7 +44,7 @@ gulp.task('test', function (cb) {
 
 // Watch Files For Changes
 gulp.task('watch', function () {
-    gulp.watch('src/**/*.js', ['clean:build', 'build']);
+    gulp.watch(['src/**/*.js','src/**/*.html'], ['build']);
 });
 
 gulp.task('watch:test', function () {
@@ -57,5 +57,5 @@ gulp.task('test:auto', function (cb) {
 
 // default task
 gulp.task('default', function (cb) {
-    gulpSequence('clean:build', 'build', 'serve', cb);
+    gulpSequence('build', 'serve', 'watch', cb);
 });

@@ -1,6 +1,7 @@
 /// <reference path="../../../../../typings/tsd.d.ts" />
 import Backbone from "backbone";
 import Marionette from "backbone.marionette";
+import Radio from "backbone.radio";
 import { HeaderLayout, NavigationView } from "./views";
 import { NavCollection } from "./models";
 
@@ -13,28 +14,38 @@ var HeaderController = Marionette.Object.extend({
 
         this.layout = new HeaderLayout();
         this.listenTo(this.layout, 'before:show', this.fillRegions);
+        Radio.channel("navigation").reply("app:navigation", event => this.setChosenNavigationItem(event));
+
         this.region.show(this.layout);
     },
 
-    fillRegions(){
+    fillRegions() {
         this.showNavigation();
     },
 
-    showNavigation(){
-        var collection = this.getNavCollection();
-        var view = new NavigationView({ collection: collection });
+    showNavigation() {
+        this.navCollection = this.getNavCollection();
+        var view = new NavigationView({ collection: this.navCollection });
 
-        this.listenTo(view, 'childview:clicked', (view, model, collection) => {
-            Backbone.history.navigate(model.get("path"));
-        })
+        this.listenTo(view, 'childview:clicked', this.navigationItemClicked);
 
         this.layout.showChildView("navRegion", view);
     },
 
+    navigationItemClicked(view, model, collection) {
+        Backbone.history.navigate(model.get("path"));
+        Radio.trigger("global", model.get("event"));
+    },
+
+    setChosenNavigationItem(event){
+        let navigationitem = this.navCollection.findWhere({ event: event });
+        navigationitem.chooseByCollection();
+    },
+
     getNavCollection() {
         var navs = [
-            { path: "/", text: "Home", chosen: true },
-            { path: "/users", text: "Users", chosen: false }
+            { path: "/", text: "Home", event: "show:home", chosen: true },
+            { path: "/people", text: "People", event: "show:people" }
         ];
         return new NavCollection(navs);
     }
