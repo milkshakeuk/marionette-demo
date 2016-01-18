@@ -1,6 +1,6 @@
 /// <reference path="../../../../../typings/tsd.d.ts" />
-import layoutTemplate from "./templates/layout.html!text";
-import navItemTemplate from "./templates/nav.item.html!text";
+import layoutTemplate from "./templates/layout.html!hbs";
+import navItemTemplate from "./templates/nav.item.html!hbs";
 import Backbone from "backbone";
 import Marionette from "backbone.marionette";
 import { Chooseable } from "../../../common/views/behaviours";

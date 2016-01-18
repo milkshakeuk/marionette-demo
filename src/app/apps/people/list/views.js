@@ -1,6 +1,6 @@
 /// <reference path="../../../../../typings/tsd.d.ts" />
-import peopleTemplate from "./templates/people.html!text";
-import personTemplate from "./templates/person.html!text";
+import peopleTemplate from "./templates/people.html!hbs";
+import personTemplate from "./templates/person.html!hbs";
 import Marionette from "backbone.marionette";
 
 

@@ -1,5 +1,5 @@
 /// <reference path="../../../../../typings/tsd.d.ts" />
-import homeTemplate from "./templates/home.html!text";
+import homeTemplate from "./templates/home.html!hbs";
 import Marionette from "backbone.marionette";
 
 

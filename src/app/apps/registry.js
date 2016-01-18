@@ -12,7 +12,7 @@ class AppRegistry {
         if (!app || !app.name || !app.app) {
             throw new Error("registering an app requires properties {name: string}, {app: class definition}");
         }
-        this._apps.push(app)
+        this._apps.push(app);
     }
 
     remove(name) {

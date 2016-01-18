@@ -1,10 +1,12 @@
 .idea/
 .idea/**/
+.vscode/
+.vscode/**/
 .settings/
 .settings/**/
 node_modules
 node_modules/**/
-httpdocs/**/
+httpdocs/**/*
 !httpdocs/img/
 !httpdocs/js/config.js
 !httpdocs/index.html

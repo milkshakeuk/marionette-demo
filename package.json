@@ -1,50 +1,51 @@
 {
-    "name": "marionette-demo",
-    "version": "0.0.1",
-    "description": "marionette application demo",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/milkshakeuk/marionette-demo.git"
+  "name": "marionette-demo",
+  "version": "0.0.1",
+  "description": "marionette application demo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milkshakeuk/marionette-demo.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "marionette",
+    "demo"
+  ],
+  "author": "Jake Aitchison",
+  "license": "LGPL-2.1",
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-sequence": "^0.4.0",
+    "gulp-webserver": "^0.9.1",
+    "jasmine-core": "^2.3.4",
+    "jspm": "^0.16.20",
+    "karma": "^0.12.37",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "httpdocs/js",
+      "packages": "httpdocs/jspm"
     },
-    "scripts": {
-        "test": "gulp test"
+    "dependencies": {
+      "backbone": "npm:backbone@^1.2.1",
+      "backbone.cocktail": "npm:backbone.cocktail@^0.5.10",
+      "backbone.marionette": "npm:backbone.marionette@^2.4.2",
+      "backbone.radio": "npm:backbone.radio@^1.0.0",
+      "handlebars": "github:components/handlebars.js@^3.0.3",
+      "hbs": "github:davis/plugin-hbs@^1.2.1",
+      "jquery": "github:components/jquery@^2.1.4",
+      "underscore": "npm:underscore@^1.8.3"
     },
-    "keywords": [
-        "marionette",
-        "demo"
-    ],
-    "author": "Jake Aitchison",
-    "license": "LGPL-2.1",
     "devDependencies": {
-        "del": "^1.2.0",
-        "gulp": "^3.9.0",
-        "gulp-sequence": "^0.4.0",
-        "gulp-webserver": "^0.9.1",
-        "jasmine-core": "^2.3.4",
-        "karma": "^0.12.37",
-        "karma-jasmine": "^0.3.6",
-        "karma-phantomjs-launcher": "^0.2.0",
-        "phantomjs": "^1.9.17"
-    },
-    "jspm": {
-        "directories": {
-            "baseURL": "httpdocs/js",
-            "packages": "httpdocs/jspm"
-        },
-        "dependencies": {
-            "backbone": "npm:backbone@^1.2.1",
-            "backbone.cocktail": "npm:backbone.cocktail@^0.5.10",
-            "backbone.marionette": "npm:backbone.marionette@^2.4.2",
-            "backbone.radio": "npm:backbone.radio@^1.0.0",
-            "handlebars": "github:components/handlebars.js@^3.0.3",
-            "jquery": "github:components/jquery@^2.1.4",
-            "text": "github:systemjs/plugin-text@^0.0.2",
-            "underscore": "npm:underscore@^1.8.3"
-        },
-        "devDependencies": {
-            "babel": "npm:babel-core@^5.6.4",
-            "babel-runtime": "npm:babel-runtime@^5.6.4",
-            "core-js": "npm:core-js@^0.9.17"
-        }
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
     }
+  }
 }
