@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gulpSequence = require('gulp-sequence');
 var del = require('del');
+var eslint = require('gulp-eslint');
 
 
 // serve website
@@ -55,7 +56,15 @@ gulp.task('test:auto', function (cb) {
     gulpSequence('test', 'watch:test', cb);
 });
 
+gulp.task('lint', function() {
+  return gulp.src('src/**/*.js')
+    .pipe(eslint())
+    .pipe(eslint.format())
+    // Brick on failure to be super strict
+    .pipe(eslint.failOnError());
+});
+
 // default task
 gulp.task('default', function (cb) {
-    gulpSequence('build', 'serve', 'watch', cb);
+    gulpSequence('lint', 'build', 'serve', 'watch', cb);
 });

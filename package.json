@@ -17,7 +17,9 @@
   "license": "LGPL-2.1",
   "devDependencies": {
     "del": "^1.2.0",
+    "eslint-config-google": "^0.3.0",
     "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
     "gulp-sequence": "^0.4.0",
     "gulp-webserver": "^0.9.1",
     "jasmine-core": "^2.3.4",

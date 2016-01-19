@@ -1,0 +1,8 @@
+{
+    "extends": "./node_modules/eslint-config-google/index.js",
+    "rules": {
+        "quote-props": [2, "consistent"],
+        "object-curly-spacing": [2, "always"],
+        "linebreak-style": 0
+    }
+}
