@@ -2,6 +2,14 @@ var gulp = require('gulp');
 var gulpSequence = require('gulp-sequence');
 var del = require('del');
 var eslint = require('gulp-eslint');
+var jsonServer = require('gulp-json-srv');
+
+
+
+// serve json-server
+gulp.task('json-server', function () {
+    jsonServer.start();
+});
 
 
 // serve website
@@ -66,5 +74,5 @@ gulp.task('lint', function() {
 
 // default task
 gulp.task('default', function (cb) {
-    gulpSequence('lint', 'build', 'serve', 'watch', cb);
+    gulpSequence('lint', 'build', 'json-server', 'serve', 'watch', cb);
 });

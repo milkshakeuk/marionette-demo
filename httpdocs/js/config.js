@@ -20,6 +20,7 @@ System.config({
     "backbone.marionette": "npm:backbone.marionette@2.4.4",
     "backbone.radio": "npm:backbone.radio@1.0.2",
     "core-js": "npm:core-js@1.2.6",
+    "handlebars": "github:components/handlebars.js@3.0.3",
     "hbs": "github:davis/plugin-hbs@1.2.1",
     "jquery": "github:components/jquery@2.1.4",
     "underscore": "npm:underscore@1.8.3",

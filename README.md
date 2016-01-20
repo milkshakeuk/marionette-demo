@@ -17,7 +17,7 @@ $ npm install
 
 Next we want to install a couple of node cli-tools:
 ```
-$ npm install -g gulp karma-cli tsd jspm@beta
+$ npm install -g gulp karma-cli tsd jspm@beta eslint json-server
 ```
 
 Next we want tell jspm to install our modules/packages:
@@ -39,8 +39,10 @@ $ gulp
 
 will run the defaul task - this task will:
 
-1. `clean:build` cleans out our `httpdocs/` folder ready for our `build` step
-2. `build` copies the contents of our `src/` directory to `httpdocs/`
-3. `serve` serves up the demo website and lauches the browser
-4. `watch` watches all the `.js` and `.html` files for changes then `clean:build` and `build` again
+1. `lint` runs eslint against the codebase and stops on error
+2. `clean:build` cleans out our `httpdocs/` folder ready for our `build` step
+3. `build` copies the contents of our `src/` directory to `httpdocs/`
+4. `json-server` serves up the our demo api using json-server
+5. `serve` serves up the demo website and lauches the browser
+6. `watch` watches all the `.js` and `.html` files for changes then `clean:build` and `build` again
 
