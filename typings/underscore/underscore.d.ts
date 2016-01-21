@@ -76,6 +76,7 @@ interface UnderscoreStatic {
 	* as the first parameter can be invoked through this function.
 	* @param key First argument to Underscore object functions.
 	**/
+	<T>(value: _.Dictionary<T>): Underscore<T>;
 	<T>(value: Array<T>): Underscore<T>;
 	<T>(value: T): Underscore<T>;
 
@@ -1238,6 +1239,13 @@ interface UnderscoreStatic {
 	* @param object Retrieve the values of all the properties on this object.
 	* @return List of all the values on `object`.
 	**/
+	values<T>(object: _.Dictionary<T>): T[];
+
+	/**
+	* Return all of the values of the object's properties.
+	* @param object Retrieve the values of all the properties on this object.
+	* @return List of all the values on `object`.
+	**/
 	values(object: any): any[];
 
     /**
@@ -1636,12 +1644,7 @@ interface UnderscoreStatic {
 	* @param prefix A prefix string to start the unique ID with.
 	* @return Unique string ID beginning with `prefix`.
 	**/
-	uniqueId(prefix: string): string;
-
-	/**
-	* @see _.uniqueId
-	**/
-	uniqueId(): number;
+	uniqueId(prefix?: string): string;
 
 	/**
 	* Escapes a string for insertion into HTML, replacing &, <, >, ", ', and / characters.
@@ -1705,6 +1708,7 @@ interface UnderscoreStatic {
 	* @return Wrapped `obj`.
 	**/
 	chain<T>(obj: T[]): _Chain<T>;
+	chain<T>(obj: _.Dictionary<T>): _Chain<T>;
 	chain<T extends {}>(obj: T): _Chain<T>;
 }
 
@@ -2919,7 +2923,7 @@ interface _Chain<T> {
 	* Wrapped type `any`.
 	* @see _.size
 	**/
-	size(): _Chain<T>;
+	size(): _ChainSingle<number>;
 
 	/*********
 	* Arrays *

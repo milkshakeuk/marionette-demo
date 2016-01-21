@@ -3,3 +3,5 @@
 /// <reference path="node/node.d.ts" />
 /// <reference path="systemjs/systemjs.d.ts" />
 /// <reference path="handlebars/handlebars.d.ts" />
+/// <reference path="backbone/backbone-global.d.ts" />
+/// <reference path="backbone/backbone.d.ts" />

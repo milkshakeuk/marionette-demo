@@ -14,7 +14,6 @@ class AppRegistry {
       if (!app || typeof app !== 'function') {
         throw new Error(`registering an app requires its class definition`);
       }
-      console.log(`registering app ${app.name}`);
       this._apps.push({ Definition: app, name: app.name });
     }
 
