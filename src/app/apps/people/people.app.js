@@ -31,7 +31,12 @@ class PeopleApp {
     }
 
     setUpListeners() {
-      Radio.channel('global').on('show:people', () => this.showPeopleList());
+      Radio.channel('navigation').request('add:navigation', {
+        path: '/people',
+        text: 'People',
+        event: 'show:people'
+      });
+      Radio.channel('global').reply('show:people', () => this.showPeopleList());
     }
 
 }

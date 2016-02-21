@@ -31,7 +31,13 @@ class HomeApp {
     }
 
     setUpListeners() {
-      Radio.channel('global').on('show:home', () => this.showHome());
+      Radio.channel('navigation').request('add:navigation', {
+        path: '/',
+        text: 'Home',
+        event: 'show:home',
+        chosen: true
+      });
+      Radio.channel('global').reply('show:home', () => this.showHome());
     }
 
 }

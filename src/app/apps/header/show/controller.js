@@ -14,9 +14,13 @@ var HeaderController = Marionette.Object.extend({
 
     this.layout = new HeaderLayout();
     this.listenTo(this.layout, 'before:show', this.fillRegions);
+    this.navCollection = new NavCollection();
 
     Radio.channel('navigation')
-         .reply('app:navigation', event => this.setChosenNavigationItem(event));
+         .reply({
+           'app:navigation': this.setChosenNavigationItem,
+           'add:navigation': this.addNavItem
+         }, this);
 
     this.region.show(this.layout);
   },
@@ -26,7 +30,6 @@ var HeaderController = Marionette.Object.extend({
   },
 
   showNavigation() {
-    this.navCollection = this.getNavCollection();
     var view = new NavigationView({ collection: this.navCollection });
 
     this.listenTo(view, 'childview:clicked', this.navigationItemClicked);
@@ -36,7 +39,7 @@ var HeaderController = Marionette.Object.extend({
 
   navigationItemClicked(view, model) {
     Backbone.history.navigate(model.get('path'));
-    Radio.trigger('global', model.get('event'));
+    Radio.channel('global').request(model.get('event'));
   },
 
   setChosenNavigationItem(event) {
@@ -44,12 +47,8 @@ var HeaderController = Marionette.Object.extend({
     navigationitem.chooseByCollection();
   },
 
-  getNavCollection() {
-    var navs = [
-            { path: '/', text: 'Home', event: 'show:home', chosen: true },
-            { path: '/people', text: 'People', event: 'show:people' }
-    ];
-    return new NavCollection(navs);
+  addNavItem(item) {
+    this.navCollection.add(item);
   }
 
 });
